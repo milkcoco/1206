@@ -85,3 +85,25 @@ website = read_html(URL)
 
 needed_txt = website %>% html_nodes("tr") %>% html_text()
 needed_txt
+
+
+#擷取ptt <a>的資訊
+URL = "https://www.ptt.cc/bbs/AllTogether/index3245.html"
+website = read_html(URL)
+
+needed_html = website %>% html_nodes("a")
+needed_html
+
+#移除HTML tag
+needed_txt = needed_html %>% html_text()
+needed_txt
+
+#根據關鍵字找出想要的資料
+intrested_pos = grep("[徵女]", needed_txt, fixed = TRUE)
+needed_txt[intrested_pos]
+
+#拿到某篇文章的連結
+needed_link = needed_html[intrested_pos] %>% html_attr("href")
+needed_link
+
+
