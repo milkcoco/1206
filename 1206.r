@@ -107,3 +107,15 @@ needed_link = needed_html[intrested_pos] %>% html_attr("href")
 needed_link
 
 
+#根據HTML class找出想要的資料
+i = 1
+sub_link = paste("https://www.ptt.cc", needed_link[i], sep = "")
+sub_website = read_html(sub_link) 
+
+article_info = sub_website %>% html_nodes(".article-meta-value")
+article_info
+
+
+
+
+
